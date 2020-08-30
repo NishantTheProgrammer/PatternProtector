@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+::-webkit-scrollbar
+{
+    display: none;
+}
+body{
+    background-color: rgb(41, 37, 37);
+}
+#app
+{
+    height: 100vh;
+    width: 100vw;
+}
+
+.form, .patternPanel{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.form input{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-style: none;
+    outline: none;
+}
+
+input[type="email"]
+{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+input[type="submit"]
+{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(170 170 170);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover
+{
+    background-color: rgb(153 180 155);
+}
+
+.patternPanel{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: cardpopup;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes cardpopup{
+    from{
+        transform: translate(-50%, 100%);
+    }
+    to{
+        transform: translate(-50%, -50%);
+    }
+}
+
+.patternPanel h1
+{
+    font-size: 35px;
+    user-select: none;
+}
+
+.nodeContainer{
+    
+    height: 300px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+}
+
+
+.nodeContainer .node{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    justify-self: center;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease;
+}
+.nodeContainer .node div{
+    height: 50%;
+    width: 50%;
+    background-color: black;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+.nodeContainer .node:hover
+{
+    background-color: #918e1a;
+    cursor: move;
+}
+
+
+
+#output{
+    color:white;
+}
