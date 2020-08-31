@@ -16,6 +16,17 @@
                     <div></div>
                 </div>
             </div>
+            <svg >
+            <line 
+                v-for="(item, i) in patternArray.slice(1)" :key="i"
+            
+                :x1="cordinates[patternArray[i]].x" 
+                :y1="cordinates[patternArray[i]].y"
+
+                :x2="cordinates[patternArray[i + 1]].x"
+                :y2="cordinates[patternArray[i + 1]].y"
+            />
+            </svg> 
         </div>
     <div class="form" v-else>
             <input type="email" id="email" placeholder="Email">
