@@ -37,23 +37,9 @@ body{
 
 input[type="email"]
 {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-
+    border-radius: 10px;
 }
 
-input[type="submit"]
-{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: rgb(170 170 170);
-    cursor: pointer;
-}
-
-input[type="submit"]:hover
-{
-    background-color: rgb(153 180 155);
-}
 
 .patternPanel{
     height: 500px;
@@ -144,4 +130,9 @@ svg{
     z-index: -1;
     stroke: rgb(35 136 80);
     stroke-width:10;
+}
+.isLoggedIn{
+    color: white;
+    width: 100%;
+    text-align: center;
 }

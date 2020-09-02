@@ -5,32 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pattern Protector</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>s  
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div id="app" @mouseup="authenticate" >
-        <div class="patternPanel" v-if="patternPanel">
-            <h1>Draw Pattern</h1>
-            <div class="nodeContainer">
-                <div class="node" v-for="i in 9" @mouseover="hoverOnNode" :id="i">
-                    <div></div>
-                </div>
-            </div>
-            <svg >
-            <line 
-                v-for="(item, i) in patternArray.slice(1)" :key="i"
-            
-                :x1="cordinates[patternArray[i]].x" 
-                :y1="cordinates[patternArray[i]].y"
-
-                :x2="cordinates[patternArray[i + 1]].x"
-                :y2="cordinates[patternArray[i + 1]].y"
-            />
-            </svg> 
+        <div class="isLoggedIn" v-if="authUserName">
+            <h1>Hi, {{ authUserName }}!</h1>
         </div>
-    <div class="form" v-else>
-            <input type="email" id="email" placeholder="Email">
-            <input type="submit" @click="patternPanel = true" value="Login">
+
+        <div v-else>
+            <div class="patternPanel" v-if="patternPanel">
+                <h1>Draw Pattern</h1>
+                <div class="nodeContainer">
+                    <div class="node" v-for="i in 9" @mouseover="hoverOnNode" :id="i">
+                        <div></div>
+                    </div>
+                </div>
+                <svg >
+                <line 
+                    v-for="(item, i) in patternArray.slice(1)" :key="i"
+                
+                    :x1="cordinates[patternArray[i]].x" 
+                    :y1="cordinates[patternArray[i]].y"
+    
+                    :x2="cordinates[patternArray[i + 1]].x"
+                    :y2="cordinates[patternArray[i + 1]].y"
+
+                    
+                />
+                </svg> 
+            </div>
+            <div class="form" v-else>
+                    <input type="email" id="email" placeholder="Email" v-model="email" @keyup.enter="patternPanel = true" autofocus>
+            </div>
         </div>
     </div>
 </body>

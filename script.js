@@ -2,6 +2,7 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
+            authUserName: '',
             patternPanel: false,
             patternArray: [],
             cordinates: [
@@ -18,6 +19,7 @@ const app = new Vue({
                 {x: 150, y: 250},
                 {x: 250, y: 250},
             ],
+            email: ''
         }
     },
     methods: {
@@ -35,8 +37,22 @@ const app = new Vue({
         authenticate(){
             if(this.patternArray.length > 1)
             {
-                alert(`Pattern: ${this.patternArray.join('')}`);
-                this.patternArray = [];
+
+                axios.post('authenticate.php', {
+                    email: this.email,
+                    pattern: this.patternArray.join('')
+                })
+                .then(function (response) {
+                    app.authUserName = response.data;
+                    console.log(app.authUserName);
+                    app.patternArray = [];
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+                
+
             }
         }
     }
